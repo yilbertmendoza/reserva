@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['sender_email'] = 'lonnieje@gmail.com';
+$config['sender_email'] = 'darcila@gmail.com';
 $config['protocol'] = 'mail';
 $config['mailpath'] = '/usr/sbin/sendmail';
 $config['smtp_host'] = '';
