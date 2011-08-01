@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-07-2011 a las 06:34:04
+-- Tiempo de generación: 31-07-2011 a las 23:55:12
 -- Versión del servidor: 5.1.49
 -- Versión de PHP: 5.3.3-7+squeeze3
 
@@ -57,12 +57,17 @@ CREATE TABLE IF NOT EXISTS `rs_login_attempts` (
   `login` varchar(50) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcar la base de datos para la tabla `rs_login_attempts`
 --
 
+INSERT INTO `rs_login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:13'),
+(2, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:13'),
+(3, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:22'),
+(4, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:22');
 
 -- --------------------------------------------------------
 
@@ -126,6 +131,30 @@ INSERT INTO `rs_roles` (`role_id`, `role_name`, `description`, `default`, `can_d
 (3, 'bloqueado', 'es el usuaio que no tiene permitido el acceso al sitio', 0, 0),
 (6, 'Desarrollador', 'Developers typically are the only ones that can access the developer tools. Otherwise identical to Administrators, at least until the site is handed off.', 0, 1),
 (7, 'cliente', 'El usuario que puede realizar reservas como cliente', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rs_sala`
+--
+
+CREATE TABLE IF NOT EXISTS `rs_sala` (
+  `id_sala` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `asientos` int(11) NOT NULL,
+  `fila` int(11) DEFAULT NULL,
+  `columna` int(11) DEFAULT NULL,
+  `descripcion` text NOT NULL,
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_sala`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `rs_sala`
+--
+
+INSERT INTO `rs_sala` (`id_sala`, `nombre`, `asientos`, `fila`, `columna`, `descripcion`, `estado`) VALUES
+(1, 'Sala comedia', 40, NULL, NULL, 'Sala para comedias', 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `rs_users` (
 
 INSERT INTO `rs_users` (`id`, `role_id`, `first_name`, `last_name`, `email`, `username`, `password_hash`, `temp_password_hash`, `salt`, `last_login`, `last_ip`, `created_on`, `street_1`, `street_2`, `city`, `state_id`, `zipcode`, `zip_extra`, `country_id`, `deleted`) VALUES
 (1, 1, NULL, NULL, 'admin@admin.com', 'admin', '8b02d57f8dad007bea697fbc0c72698645393490', NULL, 'bNQiXRs', '2011-06-29 14:33:54', '127.0.0.1', '2011-06-29 14:33:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(2, 7, NULL, NULL, 'kdarcila@gmail.com', 'darcila', 'e95323c7a3c09c23d52ce686d89377c0dd613625', NULL, '0eRVJoI', '2011-06-29 14:43:05', '0.0.0.0', '2011-06-29 14:42:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+(2, 1, NULL, NULL, 'kdarcila@gmail.com', 'darcila', 'e95323c7a3c09c23d52ce686d89377c0dd613625', NULL, '0eRVJoI', '2011-07-31 21:58:15', '0.0.0.0', '2011-06-29 14:42:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 

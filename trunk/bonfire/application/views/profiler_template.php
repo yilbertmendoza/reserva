@@ -85,13 +85,13 @@ var ci_profiler_bar = {
 	},
 	
 	// Add class to element
-	add_class : function(obj, class) {
+	add_class : function(obj, classe) {
 		alert(obj);
-		document.getElementById(obj).className += " "+ class;
+		document.getElementById(obj).className += " "+ classe;
 	},
 	
 	// Remove class from element
-	remove_class : function(obj, class) {
+	remove_class : function(obj, classe) {
 		if (obj != undefined) {
 			document.getElementById(obj).className = document.getElementById(obj).className.replace(/\bclass\b/, '');
 		}
