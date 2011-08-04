@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.7deb5
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-07-2011 a las 23:55:12
--- Versión del servidor: 5.1.49
--- Versión de PHP: 5.3.3-7+squeeze3
+-- Tiempo de generación: 04-08-2011 a las 00:46:36
+-- Versión del servidor: 5.1.41
+-- Versión de PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -25,6 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Estructura de tabla para la tabla `rs_email_queue`
 --
 
+DROP TABLE IF EXISTS `rs_email_queue`;
 CREATE TABLE IF NOT EXISTS `rs_email_queue` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `to_email` varchar(128) NOT NULL,
@@ -51,23 +52,19 @@ CREATE TABLE IF NOT EXISTS `rs_email_queue` (
 -- Estructura de tabla para la tabla `rs_login_attempts`
 --
 
+DROP TABLE IF EXISTS `rs_login_attempts`;
 CREATE TABLE IF NOT EXISTS `rs_login_attempts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(40) NOT NULL,
   `login` varchar(50) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `rs_login_attempts`
 --
 
-INSERT INTO `rs_login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(1, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:13'),
-(2, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:13'),
-(3, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:22'),
-(4, '0.0.0.0', 'admin@admin.com', '2011-07-31 19:52:22');
 
 -- --------------------------------------------------------
 
@@ -75,6 +72,7 @@ INSERT INTO `rs_login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
 -- Estructura de tabla para la tabla `rs_permissions`
 --
 
+DROP TABLE IF EXISTS `rs_permissions`;
 CREATE TABLE IF NOT EXISTS `rs_permissions` (
   `permission_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
@@ -112,6 +110,7 @@ INSERT INTO `rs_permissions` (`permission_id`, `role_id`, `Site.Signin.Allow`, `
 -- Estructura de tabla para la tabla `rs_roles`
 --
 
+DROP TABLE IF EXISTS `rs_roles`;
 CREATE TABLE IF NOT EXISTS `rs_roles` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(60) NOT NULL,
@@ -138,6 +137,7 @@ INSERT INTO `rs_roles` (`role_id`, `role_name`, `description`, `default`, `can_d
 -- Estructura de tabla para la tabla `rs_sala`
 --
 
+DROP TABLE IF EXISTS `rs_sala`;
 CREATE TABLE IF NOT EXISTS `rs_sala` (
   `id_sala` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -162,6 +162,7 @@ INSERT INTO `rs_sala` (`id_sala`, `nombre`, `asientos`, `fila`, `columna`, `desc
 -- Estructura de tabla para la tabla `rs_schema_version`
 --
 
+DROP TABLE IF EXISTS `rs_schema_version`;
 CREATE TABLE IF NOT EXISTS `rs_schema_version` (
   `version` int(3) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -179,6 +180,7 @@ INSERT INTO `rs_schema_version` (`version`) VALUES
 -- Estructura de tabla para la tabla `rs_sessions`
 --
 
+DROP TABLE IF EXISTS `rs_sessions`;
 CREATE TABLE IF NOT EXISTS `rs_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
@@ -199,6 +201,7 @@ CREATE TABLE IF NOT EXISTS `rs_sessions` (
 -- Estructura de tabla para la tabla `rs_states`
 --
 
+DROP TABLE IF EXISTS `rs_states`;
 CREATE TABLE IF NOT EXISTS `rs_states` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` char(40) NOT NULL,
@@ -281,6 +284,7 @@ INSERT INTO `rs_states` (`id`, `name`, `abbrev`) VALUES
 -- Estructura de tabla para la tabla `rs_users`
 --
 
+DROP TABLE IF EXISTS `rs_users`;
 CREATE TABLE IF NOT EXISTS `rs_users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL DEFAULT '4',
@@ -304,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `rs_users` (
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcar la base de datos para la tabla `rs_users`
@@ -312,7 +316,8 @@ CREATE TABLE IF NOT EXISTS `rs_users` (
 
 INSERT INTO `rs_users` (`id`, `role_id`, `first_name`, `last_name`, `email`, `username`, `password_hash`, `temp_password_hash`, `salt`, `last_login`, `last_ip`, `created_on`, `street_1`, `street_2`, `city`, `state_id`, `zipcode`, `zip_extra`, `country_id`, `deleted`) VALUES
 (1, 1, NULL, NULL, 'admin@admin.com', 'admin', '8b02d57f8dad007bea697fbc0c72698645393490', NULL, 'bNQiXRs', '2011-06-29 14:33:54', '127.0.0.1', '2011-06-29 14:33:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
-(2, 1, NULL, NULL, 'kdarcila@gmail.com', 'darcila', 'e95323c7a3c09c23d52ce686d89377c0dd613625', NULL, '0eRVJoI', '2011-07-31 21:58:15', '0.0.0.0', '2011-06-29 14:42:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+(2, 1, NULL, NULL, 'kdarcila@gmail.com', 'darcila', 'e95323c7a3c09c23d52ce686d89377c0dd613625', NULL, '0eRVJoI', '2011-08-03 22:57:22', '127.0.0.1', '2011-06-29 14:42:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(3, 1, 'usuario', 'reserva', 'reserva@reservacion.com', 'reserva', '2e99cb50d441ed01261f6f186b0d47c8217b3d82', NULL, 'KsrnJ0F', '2011-08-03 23:02:19', '127.0.0.1', '2011-08-03 22:55:36', '', '', '', 12, 0, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -320,6 +325,7 @@ INSERT INTO `rs_users` (`id`, `role_id`, `first_name`, `last_name`, `email`, `us
 -- Estructura de tabla para la tabla `rs_user_cookies`
 --
 
+DROP TABLE IF EXISTS `rs_user_cookies`;
 CREATE TABLE IF NOT EXISTS `rs_user_cookies` (
   `user_id` bigint(20) NOT NULL,
   `token` varchar(128) NOT NULL,
@@ -331,3 +337,7 @@ CREATE TABLE IF NOT EXISTS `rs_user_cookies` (
 -- Volcar la base de datos para la tabla `rs_user_cookies`
 --
 
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
